@@ -6,3 +6,11 @@ C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.dll
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.pdb
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.dll
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.pdb
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.dll.config
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.dll
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.pdb
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.dll
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.pdb
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.csprojResolveAssemblyReference.cache
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.dll
+C:\Users\Jeca\Documents\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.pdb

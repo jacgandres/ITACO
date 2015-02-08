@@ -18,9 +18,8 @@
                 filas++;
                 var tbContenedor = $("#tbContenedorProductos");
                 var trFilaPrpducto = $("#filaRegistroProducto").clone();
-
-
-                trFilaPrpducto.show();
+                
+                trFilaPrpducto.toggle();
                 trFilaPrpducto.attr("id", "filaRegistroProducto_" + filas);
 
                 var imgBorrar = trFilaPrpducto.find("img");
@@ -28,10 +27,9 @@
 
                 imgBorrar.click(function (e) {
                     var id = $(e)[0].target.id.split('_')[1];
-                    var trFilaPrpducto1 = $("#filaRegistroProducto" + id);
-
+                    var trFilaPrpducto1 = $("#filaRegistroProducto_" + id);
                     trFilaPrpducto1.remove();
-                    alert("Borro");
+                    alert(id);
                 });
                  
                 tbContenedor.append(trFilaPrpducto);
@@ -139,7 +137,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tbContenedorProductos">
-                                <tr id="filaRegistroProducto" style="visibility: visible">
+                                <tr id="filaRegistroProducto" style=" display:none">
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
