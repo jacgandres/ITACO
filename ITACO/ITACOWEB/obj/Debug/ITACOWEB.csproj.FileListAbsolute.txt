@@ -1,0 +1,6 @@
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.dll.config
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACOWEB.pdb
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.csprojResolveAssemblyReference.cache
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.pdb
