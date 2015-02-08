@@ -33,7 +33,7 @@
                     trFilaPrpducto1.remove();
                     alert("Borro");
                 });
-
+                 
                 tbContenedor.append(trFilaPrpducto);
             });
 
