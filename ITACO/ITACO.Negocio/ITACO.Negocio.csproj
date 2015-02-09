@@ -39,8 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ProductoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITACO.Entidades\ITACO.Entidades.csproj">
+      <Project>{78fdc1c8-998c-46cf-95b9-0daaebaf64d5}</Project>
+      <Name>ITACO.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITACO.Model\ITACO.Model.csproj">
+      <Project>{39e4e92e-339e-40d9-ad5c-fb92c304f526}</Project>
+      <Name>ITACO.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

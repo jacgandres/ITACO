@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51fc17232cd2475aa58a6a0057846b57" Name="Diagram1">
+        <EntityTypeShape EntityType="ITACOModel.Ingrediente" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.Producto" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.Producto_Tiene_Ingrediente" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.TipoCantidad" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.TipoProducto" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.Venta" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITACOModel.Venta_Tiene_Producto" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ITACOModel.FK_Ingrediente_TipoCantidad" ManuallyRouted="false" />
+        <AssociationConnector Association="ITACOModel.FK_Producto_Tiene_Ingrediente_Ingrediente" ManuallyRouted="false" />
+        <AssociationConnector Association="ITACOModel.FK_Producto_TipoProducto" ManuallyRouted="false" />
+        <AssociationConnector Association="ITACOModel.FK_Reseta_Tiene_Producto_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ITACOModel.FK_Venta_Tiene_Producto_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="ITACOModel.FK_Venta_Tiene_Producto_Venta" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

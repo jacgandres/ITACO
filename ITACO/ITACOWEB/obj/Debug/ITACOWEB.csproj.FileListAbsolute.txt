@@ -6,3 +6,11 @@ C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.dll
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\obj\Debug\ITACOWEB.pdb
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.dll
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Negocio.pdb
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Entidades.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Model.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Entidades.pdb
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Model.pdb
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.xml
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.SqlServer.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.SqlServer.xml

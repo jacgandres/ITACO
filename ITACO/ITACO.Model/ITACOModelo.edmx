@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITACOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ingrediente">
+          <Key>
+            <PropertyRef Name="IdIngrediente" />
+          </Key>
+          <Property Name="IdIngrediente" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreIngrediente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCompra" Type="date" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorIngrediente" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdMedida" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="date" Nullable="false" />
+          <Property Name="IdTipoCantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValorProducto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="IdTipoProducto" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto_Tiene_Ingrediente">
+          <Key>
+            <PropertyRef Name="IdIngrediente" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdIngrediente" Type="bigint" Nullable="false" />
+          <Property Name="IdProducto" Type="bigint" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCantidad">
+          <Key>
+            <PropertyRef Name="IdTipoCantidad" />
+          </Key>
+          <Property Name="IdTipoCantidad" Type="int" Nullable="false" />
+          <Property Name="NombreTipoCantidad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoProducto">
+          <Key>
+            <PropertyRef Name="IdTipoProducto" />
+          </Key>
+          <Property Name="IdTipoProducto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NombreTipoProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValorVenta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venta_Tiene_Producto">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdVenta" Type="bigint" Nullable="false" />
+          <Property Name="IdProducto" Type="bigint" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ingrediente_TipoCantidad">
+          <End Role="TipoCantidad" Type="Self.TipoCantidad" Multiplicity="1" />
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCantidad">
+              <PropertyRef Name="IdTipoCantidad" />
+            </Principal>
+            <Dependent Role="Ingrediente">
+              <PropertyRef Name="IdTipoCantidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Tiene_Ingrediente_Ingrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="1" />
+          <End Role="Producto_Tiene_Ingrediente" Type="Self.Producto_Tiene_Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingrediente">
+              <PropertyRef Name="IdIngrediente" />
+            </Principal>
+            <Dependent Role="Producto_Tiene_Ingrediente">
+              <PropertyRef Name="IdIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_TipoProducto">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="IdTipoProducto" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseta_Tiene_Producto_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Producto_Tiene_Ingrediente" Type="Self.Producto_Tiene_Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Producto_Tiene_Ingrediente">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Tiene_Producto_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Venta_Tiene_Producto" Type="Self.Venta_Tiene_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Venta_Tiene_Producto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Tiene_Producto_Venta">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="Venta_Tiene_Producto" Type="Self.Venta_Tiene_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="Venta_Tiene_Producto">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITACOModelStoreContainer">
+          <EntitySet Name="Ingrediente" EntityType="Self.Ingrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto_Tiene_Ingrediente" EntityType="Self.Producto_Tiene_Ingrediente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCantidad" EntityType="Self.TipoCantidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta_Tiene_Producto" EntityType="Self.Venta_Tiene_Producto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ingrediente_TipoCantidad" Association="Self.FK_Ingrediente_TipoCantidad">
+            <End Role="TipoCantidad" EntitySet="TipoCantidad" />
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Tiene_Ingrediente_Ingrediente" Association="Self.FK_Producto_Tiene_Ingrediente_Ingrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="Producto_Tiene_Ingrediente" EntitySet="Producto_Tiene_Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_TipoProducto" Association="Self.FK_Producto_TipoProducto">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseta_Tiene_Producto_Producto" Association="Self.FK_Reseta_Tiene_Producto_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Producto_Tiene_Ingrediente" EntitySet="Producto_Tiene_Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_Tiene_Producto_Producto" Association="Self.FK_Venta_Tiene_Producto_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Venta_Tiene_Producto" EntitySet="Venta_Tiene_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_Tiene_Producto_Venta" Association="Self.FK_Venta_Tiene_Producto_Venta">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Venta_Tiene_Producto" EntitySet="Venta_Tiene_Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITACOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ingrediente">
+          <Key>
+            <PropertyRef Name="IdIngrediente" />
+          </Key>
+          <Property Name="IdIngrediente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreIngrediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorIngrediente" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdMedida" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdTipoCantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoCantidad" Relationship="Self.FK_Ingrediente_TipoCantidad" FromRole="Ingrediente" ToRole="TipoCantidad" />
+          <NavigationProperty Name="Producto_Tiene_Ingrediente" Relationship="Self.FK_Producto_Tiene_Ingrediente_Ingrediente" FromRole="Ingrediente" ToRole="Producto_Tiene_Ingrediente" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ValorProducto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="IdTipoProducto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TipoProducto" Relationship="Self.FK_Producto_TipoProducto" FromRole="Producto" ToRole="TipoProducto" />
+          <NavigationProperty Name="Producto_Tiene_Ingrediente" Relationship="Self.FK_Reseta_Tiene_Producto_Producto" FromRole="Producto" ToRole="Producto_Tiene_Ingrediente" />
+          <NavigationProperty Name="Venta_Tiene_Producto" Relationship="Self.FK_Venta_Tiene_Producto_Producto" FromRole="Producto" ToRole="Venta_Tiene_Producto" />
+        </EntityType>
+        <EntityType Name="Producto_Tiene_Ingrediente">
+          <Key>
+            <PropertyRef Name="IdIngrediente" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdIngrediente" Type="Int64" Nullable="false" />
+          <Property Name="IdProducto" Type="Int64" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Ingrediente" Relationship="Self.FK_Producto_Tiene_Ingrediente_Ingrediente" FromRole="Producto_Tiene_Ingrediente" ToRole="Ingrediente" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Reseta_Tiene_Producto_Producto" FromRole="Producto_Tiene_Ingrediente" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="TipoCantidad">
+          <Key>
+            <PropertyRef Name="IdTipoCantidad" />
+          </Key>
+          <Property Name="IdTipoCantidad" Type="Int32" Nullable="false" />
+          <Property Name="NombreTipoCantidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Ingrediente" Relationship="Self.FK_Ingrediente_TipoCantidad" FromRole="TipoCantidad" ToRole="Ingrediente" />
+        </EntityType>
+        <EntityType Name="TipoProducto">
+          <Key>
+            <PropertyRef Name="IdTipoProducto" />
+          </Key>
+          <Property Name="IdTipoProducto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NombreTipoProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_TipoProducto" FromRole="TipoProducto" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+          </Key>
+          <Property Name="IdVenta" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValorVenta" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Venta_Tiene_Producto" Relationship="Self.FK_Venta_Tiene_Producto_Venta" FromRole="Venta" ToRole="Venta_Tiene_Producto" />
+        </EntityType>
+        <EntityType Name="Venta_Tiene_Producto">
+          <Key>
+            <PropertyRef Name="IdVenta" />
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdVenta" Type="Int64" Nullable="false" />
+          <Property Name="IdProducto" Type="Int64" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Venta_Tiene_Producto_Producto" FromRole="Venta_Tiene_Producto" ToRole="Producto" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Tiene_Producto_Venta" FromRole="Venta_Tiene_Producto" ToRole="Venta" />
+        </EntityType>
+        <Association Name="FK_Ingrediente_TipoCantidad">
+          <End Role="TipoCantidad" Type="Self.TipoCantidad" Multiplicity="1" />
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCantidad">
+              <PropertyRef Name="IdTipoCantidad" />
+            </Principal>
+            <Dependent Role="Ingrediente">
+              <PropertyRef Name="IdTipoCantidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_Tiene_Ingrediente_Ingrediente">
+          <End Role="Ingrediente" Type="Self.Ingrediente" Multiplicity="1" />
+          <End Role="Producto_Tiene_Ingrediente" Type="Self.Producto_Tiene_Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingrediente">
+              <PropertyRef Name="IdIngrediente" />
+            </Principal>
+            <Dependent Role="Producto_Tiene_Ingrediente">
+              <PropertyRef Name="IdIngrediente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_TipoProducto">
+          <End Role="TipoProducto" Type="Self.TipoProducto" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProducto">
+              <PropertyRef Name="IdTipoProducto" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdTipoProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reseta_Tiene_Producto_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Producto_Tiene_Ingrediente" Type="Self.Producto_Tiene_Ingrediente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Producto_Tiene_Ingrediente">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Tiene_Producto_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Venta_Tiene_Producto" Type="Self.Venta_Tiene_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Venta_Tiene_Producto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venta_Tiene_Producto_Venta">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="Venta_Tiene_Producto" Type="Self.Venta_Tiene_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="IdVenta" />
+            </Principal>
+            <Dependent Role="Venta_Tiene_Producto">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITACOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ingrediente" EntityType="Self.Ingrediente" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Producto_Tiene_Ingrediente" EntityType="Self.Producto_Tiene_Ingrediente" />
+          <EntitySet Name="TipoCantidad" EntityType="Self.TipoCantidad" />
+          <EntitySet Name="TipoProducto" EntityType="Self.TipoProducto" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" />
+          <EntitySet Name="Venta_Tiene_Producto" EntityType="Self.Venta_Tiene_Producto" />
+          <AssociationSet Name="FK_Ingrediente_TipoCantidad" Association="Self.FK_Ingrediente_TipoCantidad">
+            <End Role="TipoCantidad" EntitySet="TipoCantidad" />
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_Tiene_Ingrediente_Ingrediente" Association="Self.FK_Producto_Tiene_Ingrediente_Ingrediente">
+            <End Role="Ingrediente" EntitySet="Ingrediente" />
+            <End Role="Producto_Tiene_Ingrediente" EntitySet="Producto_Tiene_Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_TipoProducto" Association="Self.FK_Producto_TipoProducto">
+            <End Role="TipoProducto" EntitySet="TipoProducto" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reseta_Tiene_Producto_Producto" Association="Self.FK_Reseta_Tiene_Producto_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Producto_Tiene_Ingrediente" EntitySet="Producto_Tiene_Ingrediente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_Tiene_Producto_Producto" Association="Self.FK_Venta_Tiene_Producto_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Venta_Tiene_Producto" EntitySet="Venta_Tiene_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venta_Tiene_Producto_Venta" Association="Self.FK_Venta_Tiene_Producto_Venta">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Venta_Tiene_Producto" EntitySet="Venta_Tiene_Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITACOModelStoreContainer" CdmEntityContainer="ITACOEntities">
+          <EntitySetMapping Name="Ingrediente">
+            <EntityTypeMapping TypeName="ITACOModel.Ingrediente">
+              <MappingFragment StoreEntitySet="Ingrediente">
+                <ScalarProperty Name="IdIngrediente" ColumnName="IdIngrediente" />
+                <ScalarProperty Name="NombreIngrediente" ColumnName="NombreIngrediente" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="ValorIngrediente" ColumnName="ValorIngrediente" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="IdTipoCantidad" ColumnName="IdTipoCantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="ITACOModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="ValorProducto" ColumnName="ValorProducto" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdTipoProducto" ColumnName="IdTipoProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto_Tiene_Ingrediente">
+            <EntityTypeMapping TypeName="ITACOModel.Producto_Tiene_Ingrediente">
+              <MappingFragment StoreEntitySet="Producto_Tiene_Ingrediente">
+                <ScalarProperty Name="IdIngrediente" ColumnName="IdIngrediente" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCantidad">
+            <EntityTypeMapping TypeName="ITACOModel.TipoCantidad">
+              <MappingFragment StoreEntitySet="TipoCantidad">
+                <ScalarProperty Name="IdTipoCantidad" ColumnName="IdTipoCantidad" />
+                <ScalarProperty Name="NombreTipoCantidad" ColumnName="NombreTipoCantidad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoProducto">
+            <EntityTypeMapping TypeName="ITACOModel.TipoProducto">
+              <MappingFragment StoreEntitySet="TipoProducto">
+                <ScalarProperty Name="IdTipoProducto" ColumnName="IdTipoProducto" />
+                <ScalarProperty Name="NombreTipoProducto" ColumnName="NombreTipoProducto" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venta">
+            <EntityTypeMapping TypeName="ITACOModel.Venta">
+              <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="ValorVenta" ColumnName="ValorVenta" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venta_Tiene_Producto">
+            <EntityTypeMapping TypeName="ITACOModel.Venta_Tiene_Producto">
+              <MappingFragment StoreEntitySet="Venta_Tiene_Producto">
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

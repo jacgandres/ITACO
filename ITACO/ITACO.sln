@@ -5,9 +5,18 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITACOWEB", "ITACOWEB\ITACOWEB.csproj", "{FDBB8E64-F064-4D38-A52A-53CC79E9919B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITACO.Datos", "ITACO.Datos\ITACO.Datos.csproj", "{11D622E0-2B0B-4B81-9551-C721955BE307}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITACO.Negocio", "ITACO.Negocio\ITACO.Negocio.csproj", "{60D77D27-923E-4DD5-AECF-5CD61F8C0A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITACO.Model", "ITACO.Model\ITACO.Model.csproj", "{39E4E92E-339E-40D9-AD5C-FB92C304F526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITACO.Entidades", "ITACO.Entidades\ITACO.Entidades.csproj", "{78FDC1C8-998C-46CF-95B9-0DAAEBAF64D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A1C87807-CE31-45FC-A0BA-20C3E94ABDB3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +28,18 @@ Global
 		{FDBB8E64-F064-4D38-A52A-53CC79E9919B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDBB8E64-F064-4D38-A52A-53CC79E9919B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDBB8E64-F064-4D38-A52A-53CC79E9919B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11D622E0-2B0B-4B81-9551-C721955BE307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11D622E0-2B0B-4B81-9551-C721955BE307}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11D622E0-2B0B-4B81-9551-C721955BE307}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11D622E0-2B0B-4B81-9551-C721955BE307}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60D77D27-923E-4DD5-AECF-5CD61F8C0A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{60D77D27-923E-4DD5-AECF-5CD61F8C0A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60D77D27-923E-4DD5-AECF-5CD61F8C0A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60D77D27-923E-4DD5-AECF-5CD61F8C0A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39E4E92E-339E-40D9-AD5C-FB92C304F526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E4E92E-339E-40D9-AD5C-FB92C304F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E4E92E-339E-40D9-AD5C-FB92C304F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E4E92E-339E-40D9-AD5C-FB92C304F526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FDC1C8-998C-46CF-95B9-0DAAEBAF64D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FDC1C8-998C-46CF-95B9-0DAAEBAF64D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FDC1C8-998C-46CF-95B9-0DAAEBAF64D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FDC1C8-998C-46CF-95B9-0DAAEBAF64D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

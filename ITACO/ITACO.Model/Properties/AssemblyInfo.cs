@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ITACO.Datos")]
+[assembly: AssemblyTitle("ITACO.Model")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ITACO.Datos")]
+[assembly: AssemblyProduct("ITACO.Model")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6302fe42-cbf7-4835-b527-3209fe36c135")]
+[assembly: Guid("030a1156-e4c6-4f27-bbab-d9fb7f19fe14")]
 
 // Version information for an assembly consists of the following four values:
 //
