@@ -7,14 +7,24 @@ using ITACO.Entidades;
 
 namespace ITACO.Model
 {
-    public class ProductoDAO:IDisposable
+    public class ProductoDAO : IDisposable
     {
-        public List<Producto> ObtenerProductos()
+        public dynamic ObtenerProductos()
         {
-            using(var contexto = new ITACOEntities())
+            using (var contexto = new ITACOEntities())
             {
-                List<Producto> productos = contexto.Producto.ToList();
-                return productos;
+                var productos = from prod in contexto.Producto
+                                select new
+                                  {
+                                      IdProducto = prod.IdProducto,
+                                      Estado = prod.Estado,
+                                      FechaRegistro = prod.FechaRegistro,
+                                      IdTipoProducto = prod.IdTipoProducto,
+                                      NombreProducto = prod.NombreProducto,
+                                      ValorProducto = prod.ValorProducto
+                                  };
+
+                return productos.ToList();
             }
         }
 

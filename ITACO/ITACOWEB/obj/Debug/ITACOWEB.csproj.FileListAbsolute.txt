@@ -14,3 +14,5 @@ C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\ITACO.Model.pdb
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.xml
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.SqlServer.dll
 C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\EntityFramework.SqlServer.xml
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\Newtonsoft.Json.dll
+C:\Desarrollos\ITACO\ITACO\ITACOWEB\bin\Newtonsoft.Json.xml

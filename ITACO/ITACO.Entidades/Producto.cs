@@ -11,8 +11,9 @@ namespace ITACO.Entidades
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Producto
+    using ITACO.Entidades.Wrapper;
+
+    public partial class Producto : ProductoCore
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
@@ -20,14 +21,9 @@ namespace ITACO.Entidades
             this.Producto_Tiene_Ingrediente = new HashSet<Producto_Tiene_Ingrediente>();
             this.Venta_Tiene_Producto = new HashSet<Venta_Tiene_Producto>();
         }
-    
-        public long IdProducto { get; set; }
-        public string NombreProducto { get; set; }
-        public decimal ValorProducto { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
-        public bool Estado { get; set; }
-        public string IdTipoProducto { get; set; }
-    
+
+
+
         public virtual TipoProducto TipoProducto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto_Tiene_Ingrediente> Producto_Tiene_Ingrediente { get; set; }

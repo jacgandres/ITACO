@@ -9,10 +9,40 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/Comun/hashtable.js"></script>
+    <script src="js/Comun/json2.min.js"></script>
+    <script src="js/Comun/String.js"></script>
+    <script src="js/Comun/jquery.ajaxdotnet.3.js"></script>
+    <script src="js/Comun/jquery.ajaxdotnet.intellisense.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
+
             var filas = 0;
             $("#btnAdicionarProductos").click(function () {
+
+                var url = window.location.href.toString().split("?")[0].split("#")[0] + "/ObtenerProductos";
+
+                var data = new Object();
+                data.pAlgo = 'Pruebas';
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: '{pAlgo:"Pruebas"}',
+                    dataType: 'json',
+                    contentType: "application/json;charset=utf-8",
+                    success: function (response) {
+                        debugger;
+                    },
+                    error: function (err) {
+                        debugger;
+                        alert(err.responseText);
+                    }
+                });
+
+
 
                 //debugger;
                 filas++;
@@ -28,12 +58,12 @@
 
                 imgBorrar.click(function (e) {
                     var id = $(e)[0].target.id.split('_')[1];
-                    var trFilaPrpducto1 = $("#filaRegistroProducto" + id);
+                    var trFilaPrpducto1 = $("#filaRegistroProducto_" + id);
 
                     trFilaPrpducto1.remove();
-                    alert("Borro");
+                    alert("Se ha quitado el registro exitosamente.");
                 });
-                 
+
                 tbContenedor.append(trFilaPrpducto);
             });
 

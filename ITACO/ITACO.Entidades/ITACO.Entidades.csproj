@@ -80,6 +80,7 @@
     <Compile Include="Venta_Tiene_Producto.cs">
       <DependentUpon>ModeloEntidades.tt</DependentUpon>
     </Compile>
+    <Compile Include="Wrapper\ProductoCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

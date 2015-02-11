@@ -8,14 +8,18 @@ using ITACO.Model;
 
 namespace ITACO.Negocio
 {
-    public class ProductoNegocio
+    public class ProductoNegocio: IDisposable
     {
-        public List<Producto> ObtenerProductos()
+        public dynamic ObtenerProductos()
         {
             using(ProductoDAO dao = new ProductoDAO())
             {
                 return dao.ObtenerProductos();
             }
+        }
+
+        void IDisposable.Dispose()
+        { 
         }
     }
 }
