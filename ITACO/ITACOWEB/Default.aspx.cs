@@ -24,14 +24,13 @@ namespace ITACOWEB
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static dynamic ObtenerProductos(string pAlgo)
+        public static dynamic ObtenerProductos()
         {
             try
             {
                 using (ProductoNegocio neg = new ProductoNegocio())
                 {
-                    var algo = neg.ObtenerProductos();
-                    string tmp = JsonConvert.SerializeObject(algo);
+                    var algo = neg.ObtenerProductos(); 
                     return algo;
                 }
             }

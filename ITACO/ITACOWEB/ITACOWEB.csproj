@@ -80,6 +80,7 @@
     <Content Include="js\Comun\hashtable.js" />
     <Content Include="js\Comun\json2.min.js" />
     <Content Include="js\Comun\String.js" />
+    <Content Include="js\Productos\Producto.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

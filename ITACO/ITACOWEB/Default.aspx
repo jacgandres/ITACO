@@ -16,45 +16,34 @@
     <script src="js/Comun/jquery.ajaxdotnet.3.js"></script>
     <script src="js/Comun/jquery.ajaxdotnet.intellisense.js"></script>
 
+    <script src="js/Productos/Producto.js"></script>
+
     <script type="text/javascript">
+        var filas = 0;
         $(document).ready(function () {
 
-            var filas = 0;
+            ObtenerProductos();
+
             $("#btnAdicionarProductos").click(function () {
 
-                var url = window.location.href.toString().split("?")[0].split("#")[0] + "/ObtenerProductos";
-
-                var data = new Object();
-                data.pAlgo = 'Pruebas';
-
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: '{pAlgo:"Pruebas"}',
-                    dataType: 'json',
-                    contentType: "application/json;charset=utf-8",
-                    success: function (response) {
-                        debugger;
-                    },
-                    error: function (err) {
-                        debugger;
-                        alert(err.responseText);
-                    }
-                });
-
-
-
-                //debugger;
-                filas++;
                 var tbContenedor = $("#tbContenedorProductos");
                 var trFilaPrpducto = $("#filaRegistroProducto").clone();
-
 
                 trFilaPrpducto.show();
                 trFilaPrpducto.attr("id", "filaRegistroProducto_" + filas);
 
                 var imgBorrar = trFilaPrpducto.find("img");
                 imgBorrar.attr("id", "imgEliminarProducto_" + filas);
+
+                var lblBorrar = trFilaPrpducto.find("b");
+                lblBorrar.attr("id", "lblProductoSeleccionado_" + filas);
+
+                var inputValorProd = trFilaPrpducto.find("input");
+                inputValorProd.attr("id", "txtValorProducto_" + filas);
+
+                var ulMenuProductos = trFilaPrpducto.find("ul");
+                ulMenuProductos.attr("id", "ulMenuProductos_" + filas);
+
 
                 imgBorrar.click(function (e) {
                     var id = $(e)[0].target.id.split('_')[1];
@@ -169,21 +158,25 @@
                                 </tr>
                             </thead>
                             <tbody id="tbContenedorProductos">
-                                <tr id="filaRegistroProducto" style="visibility: visible">
-                                    <td>
+                                <tr id="filaRegistroProducto" style="display: none;">
+                                    <td style="align-content: center; text-align: center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                 Productos <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu" id="ulMenuProductos">
-                                                <li><a href="#">Pizza</a></li>
-                                                <li><a href="#">Hamburgesa</a></li>
-                                                <li><a href="#">Empanada</a></li>
+                                                <li id="0"><a href="#" >--Seleccione una opcion--</a></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td>
-                                        <input type="text" value="$1235678" readonly="true" title="Valor del producto" disabled="disabled" />
+                                    <td style="align-content: center; text-align: center">
+                                        <table>
+                                            <tr>
+                                                <td><b id="lblProductoSeleccionado"></b></td>
+                                                <td>
+                                                    <input id="txtValorProducto_" type="text" value="" readonly="true" title="Valor del producto" disabled="disabled" /></td>
+                                            </tr>
+                                        </table>
                                     </td>
                                     <td style="align-content: center; text-align: center">
                                         <img id="imgEliminarProducto" src="Imagenes/virus_recycler.png" alt="Eliminar Producto" class="img-circle" style="cursor: pointer" />
