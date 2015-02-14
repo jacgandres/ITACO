@@ -197,10 +197,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITACO.Controller\ITACO.Controller.csproj">
-      <Project>{6fe757e6-88f1-4b91-a08a-e5334ef96da8}</Project>
-      <Name>ITACO.Controller</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ITACO.DAL\ITACO.DAL.csproj">
       <Project>{39c0a83c-45f7-499b-a89a-d4a9db644b77}</Project>
       <Name>ITACO.DAL</Name>
