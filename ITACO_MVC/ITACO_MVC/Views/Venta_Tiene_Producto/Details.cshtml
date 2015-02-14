@@ -1,0 +1,42 @@
+﻿@model ITACO.Model.Venta_Tiene_Producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Venta_Tiene_Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.NombreProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.NombreProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Venta.VentaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Venta.VentaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Venta_Tiene_ProductoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
