@@ -121,6 +121,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\Reporte_Ventas_Por_FechaController.cs" />
     <Compile Include="Controllers\TipoProductoController.cs" />
     <Compile Include="Controllers\VentaController.cs" />
     <Compile Include="Controllers\Venta_Tiene_ProductoController.cs" />
@@ -185,6 +186,7 @@
     <Content Include="Views\Venta_Tiene_Producto\Details.cshtml" />
     <Content Include="Views\Venta_Tiene_Producto\Edit.cshtml" />
     <Content Include="Views\Venta_Tiene_Producto\Index.cshtml" />
+    <Content Include="Views\Reporte_Ventas_Por_Fecha\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
